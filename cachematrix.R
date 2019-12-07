@@ -2,8 +2,8 @@
 
 makeCacheMatrix <- function(x = matrix()) {
   inverse_matrix <- NULL                      #initialising inverse_matrix as null
-  set <- function(y) {                        # assigning new via set function
-    x <<- y                                   # matrix in parent enviroment    
+  set <- function(y) {                        # assigning new matrix via set function
+    x <<- y                                   
     inverse_matrix <<- NULL                   # for new matrix, inverse_matrix is set to null  
   }
   get <- function() x                         # gets the value of matrix
@@ -37,6 +37,9 @@ mat <- makeCacheMatrix(test)
 mat$get()
 mat$get_inverse()
 cacheSolve(mat)
+## Test for caching
+cacheSolve(mat)
+
 
 ## 2 x 2 matrix
 test <- matrix(c(2,1,2,2),2,2)
@@ -44,10 +47,14 @@ mat <- makeCacheMatrix(test)
 mat$get()
 mat$get_inverse()
 cacheSolve(mat)
+## Test for caching
+cacheSolve(mat)
 
 ## 4 x 4 matrix
 test <- matrix(c(3,3,6,1,6,9,0,0,1,9,0,0,3,1,1,5),4,4)
 mat <- makeCacheMatrix(test)
 mat$get()## 4 x 4 matrix
 mat$get_inverse()
+cacheSolve(mat)
+## Test for caching
 cacheSolve(mat)
